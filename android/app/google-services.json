@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "150120550264",
+    "project_id": "major-project-13890",
+    "storage_bucket": "major-project-13890.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150120550264:android:a431476a6522d5176b828d",
+        "android_client_info": {
+          "package_name": "com.aaryansapplication.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACIe6Hu86DcGAbCpkhfkqtY9nLzQaIBgY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
