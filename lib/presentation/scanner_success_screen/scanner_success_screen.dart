@@ -303,7 +303,7 @@ class CropImage extends StatelessWidget {
                     )
                   : Image.file(
                       File(image!),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
         ),
       ),
