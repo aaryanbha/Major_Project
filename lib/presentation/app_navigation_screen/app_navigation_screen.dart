@@ -45,25 +45,19 @@ class AppNavigationScreen extends StatelessWidget {
                         ),
                         _buildScreenTitle(
                           context,
-                          screenTitle: "Type of measurements  Three",
-                          onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.typeOfMeasurementsThreeScreen),
-                        ),
-                        _buildScreenTitle(
-                          context,
-                          screenTitle: "Type of measurements ",
+                          screenTitle: "Type of measurements 1 PH-selected",
                           onTapScreenTitle: () => onTapScreenTitle(
                               context, AppRoutes.typeOfMeasurementsScreen),
                         ),
                         _buildScreenTitle(
                           context,
-                          screenTitle: "Type of measurements  Two",
+                          screenTitle: "Soil Moisture Solution Method",
                           onTapScreenTitle: () => onTapScreenTitle(
-                              context, AppRoutes.typeOfMeasurementsTwoScreen),
+                              context, AppRoutes.soilMosistureSolution),
                         ),
                         _buildScreenTitle(
                           context,
-                          screenTitle: "Single Test Results - Pass Four",
+                          screenTitle: "Soil Pass",
                           onTapScreenTitle: () => onTapScreenTitle(context,
                               AppRoutes.singleTestResultsPassFourScreen),
                         ),
@@ -123,7 +117,7 @@ class AppNavigationScreen extends StatelessWidget {
                         ),
                         _buildScreenTitle(
                           context,
-                          screenTitle: "Single Test Results - Fail One",
+                          screenTitle: "Soil Fail",
                           onTapScreenTitle: () => onTapScreenTitle(context,
                               AppRoutes.singleTestResultsFailOneScreen),
                         ),

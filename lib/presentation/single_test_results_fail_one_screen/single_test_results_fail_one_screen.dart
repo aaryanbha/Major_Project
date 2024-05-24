@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:aaryan_s_application4/core/app_export.dart';
 
 class SingleTestResultsFailOneScreen extends StatelessWidget {
-  const SingleTestResultsFailOneScreen({Key? key}) : super(key: key);
+
+  const SingleTestResultsFailOneScreen({Key? key, required double responseNumber}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -153,3 +154,4 @@ class SingleTestResultsFailOneScreen extends StatelessWidget {
     Navigator.pushNamed(context, AppRoutes.typeOfMeasurementsSevenScreen);
   }
 }
+
