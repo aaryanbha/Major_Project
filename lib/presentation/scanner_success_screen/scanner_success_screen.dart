@@ -1,15 +1,15 @@
+import 'dart:developer';
+
 import 'package:aaryan_s_application4/presentation/type_of_measurements_screen/type_of_measurements_screen.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'dart:io';
-import 'package:http/http.dart' as http;
 import 'package:aaryan_s_application4/core/app_export.dart';
 import 'package:aaryan_s_application4/widgets/app_bar/custom_app_bar.dart';
 import 'package:aaryan_s_application4/widgets/app_bar/appbar_leading_image.dart';
 import 'package:aaryan_s_application4/widgets/app_bar/appbar_trailing_button_one.dart';
-
-import '../single_test_results_pass_five_screen/single_test_results_pass_five_screen.dart';
-import '../single_test_results_pass_four_screen/single_test_results_pass_four_screen.dart';
+import 'package:provider/provider.dart';
 
 class ScannerSuccessScreen extends StatefulWidget {
   const ScannerSuccessScreen({Key? key}) : super(key: key);
@@ -19,17 +19,39 @@ class ScannerSuccessScreen extends StatefulWidget {
 }
 
 class _ScannerSuccessScreenState extends State<ScannerSuccessScreen> {
-  File? _image;
-  int? _apiResponse;
+  late CameraController _controller;
+  late Future<void> _initializeControllerFuture;
+  int loading = 0;
+  String? _mainImage;
+  String? image1;
+  String? image2;
+  String? image3;
+  String? image4;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = CameraController(
+      context.read<CameraDescription>(),
+      ResolutionPreset.medium,
+    );
+
+    _initializeControllerFuture = _controller.initialize();
+  }
+
+  @override
+  void dispose() {
+    // Dispose of the controller when the widget is disposed.
+    _controller.dispose();
+    super.dispose();
+  }
 
   Future<void> _pickImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.camera);
-
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path);
-      });
-    }
+    await _initializeControllerFuture;
+    final image = await _controller.takePicture();
+    setState(() {
+      _mainImage = image.path;
+    });
   }
 
   Future<String> _sendImageToApi(File image) async {
@@ -43,26 +65,76 @@ class _ScannerSuccessScreenState extends State<ScannerSuccessScreen> {
     return response;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: _buildAppBar(context),
-        body: Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(vertical: 100.v),
+        body: SingleChildScrollView(
           child: Column(
             children: [
-              Spacer(flex: 44),
+              SizedBox(height: 44),
               _buildOne(context),
-              Spacer(flex: 55),
+              SizedBox(height: 15),
               _buildCameraIcon(context),
+              _buildListView(context),
               _buildSubmitButton(context),
+              SizedBox(height: 25),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  _buildListView(BuildContext context) {
+    return Column(
+      children: [
+        CropImage(
+          mainImage: _mainImage,
+          image: image1,
+          number: 1,
+          callback: (path) {
+            setState(() {
+              image1 = path;
+            });
+          },
+        ),
+        SizedBox(height: 10),
+        CropImage(
+          mainImage: _mainImage,
+          image: image2,
+          number: 2,
+          callback: (path) {
+            setState(() {
+              image2 = path;
+            });
+          },
+        ),
+        SizedBox(height: 10),
+        CropImage(
+          mainImage: _mainImage,
+          image: image3,
+          number: 3,
+          callback: (path) {
+            setState(() {
+              image3 = path;
+            });
+          },
+        ),
+        SizedBox(height: 10),
+        CropImage(
+          mainImage: _mainImage,
+          image: image4,
+          number: 4,
+          callback: (path) {
+            setState(() {
+              image4 = path;
+            });
+          },
+        ),
+        SizedBox(height: 10),
+      ],
     );
   }
 
@@ -96,18 +168,29 @@ class _ScannerSuccessScreenState extends State<ScannerSuccessScreen> {
         left: 16.h,
         right: 21.h,
       ),
-      padding: EdgeInsets.symmetric(
-        horizontal: 36.h,
-        vertical: 62.v,
-      ),
       decoration: AppDecoration.outlineTeal.copyWith(
         borderRadius: BorderRadiusStyle.roundedBorder14,
       ),
-      child: CustomImageView(
-        imagePath: _image != null ? _image!.path : ImageConstant.imgWhatsappImage20240127,
-        height: 92.v,
-        width: 299.h,
+      child: SizedBox(
+        height: 192.v,
+        width: double.infinity,
+        child: (_mainImage != null)
+            ? Image.file(
+                File(_mainImage!),
+                fit: BoxFit.cover,
+              )
+            : CustomImageView(
+                imagePath: ImageConstant.imgWhatsappImage20240127,
+                height: 92.v,
+                width: 299.h,
+                fit: BoxFit.cover,
+              ),
       ),
+      // child: CustomImageView(
+      //   imagePath: _image != null ? _image!.path : ImageConstant.imgWhatsappImage20240127,
+      //   height: 92.v,
+      //   width: 299.h,
+      // ),
     );
   }
 
@@ -129,18 +212,21 @@ class _ScannerSuccessScreenState extends State<ScannerSuccessScreen> {
         width: 200,
         height: 50,
         child: ElevatedButton(
-          onPressed:  () async {
+          onPressed: () async {
             // String responseNumber = await _sendImageToApi(_image!);
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TypeOfMeasurementsScreen()
-              ),
+                  builder: (context) => TypeOfMeasurementsScreen()),
             );
           },
           style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white, backgroundColor: Colors.teal, padding: EdgeInsets.symmetric(vertical: 15.0), // Text color
-            textStyle: TextStyle(fontSize: 18), // Text style
+            foregroundColor: Colors.white,
+            backgroundColor: Colors.teal,
+            padding: EdgeInsets.symmetric(vertical: 15.0),
+            // Text color
+            textStyle: TextStyle(fontSize: 18),
+            // Text style
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10), // Button border radius
             ),
@@ -150,6 +236,77 @@ class _ScannerSuccessScreenState extends State<ScannerSuccessScreen> {
       ),
     );
   }
-
 }
 
+class CropImage extends StatelessWidget {
+  final String? mainImage;
+  final String? image;
+  final int number;
+  final Function(String) callback;
+
+  const CropImage({
+    super.key,
+    required this.mainImage,
+    required this.image,
+    required this.number,
+    required this.callback,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: ()async{
+        CroppedFile? croppedFile = await ImageCropper().cropImage(
+          sourcePath: mainImage!,
+          aspectRatioPresets: [
+            CropAspectRatioPreset.square,
+            CropAspectRatioPreset.ratio3x2,
+            CropAspectRatioPreset.original,
+            CropAspectRatioPreset.ratio4x3,
+            CropAspectRatioPreset.ratio16x9
+          ],
+          uiSettings: [
+            AndroidUiSettings(
+                toolbarTitle: 'Cropper',
+                toolbarColor: Colors.deepOrange,
+                toolbarWidgetColor: Colors.white,
+                initAspectRatio: CropAspectRatioPreset.original,
+                lockAspectRatio: false),
+            IOSUiSettings(
+              title: 'Cropper',
+            ),
+            WebUiSettings(
+              context: context,
+            ),
+          ],
+        );
+        callback(croppedFile!.path);
+      },
+      child: Container(
+        margin: EdgeInsets.only(
+          left: 16.h,
+          right: 21.h,
+        ),
+        decoration: AppDecoration.outlineTeal.copyWith(
+          borderRadius: BorderRadiusStyle.roundedBorder14,
+        ),
+        child: SizedBox(
+          height: 192.v,
+          width: double.infinity,
+          child: (mainImage == null)
+              ? Center(
+                  child: Text("Click image first"),
+                )
+              : (image == null)
+                  ? Center(
+                      child: Text("Click here to crop image $number"),
+                    )
+                  : Image.file(
+                      File(image!),
+                      fit: BoxFit.cover,
+                    ),
+        ),
+      ),
+    );
+  }
+}
