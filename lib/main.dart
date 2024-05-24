@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
           theme: theme,
           title: 'aaryan_s_application4',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.appNavigationScreen,
+          initialRoute: AppRoutes.splashScreen,
           routes: AppRoutes.routes,
         );
       },

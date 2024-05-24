@@ -5,6 +5,8 @@ import 'package:aaryan_s_application4/widgets/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:aaryan_s_application4/core/app_export.dart';
 
+import '../single_test_results_pass_five_screen/single_test_results_pass_five_screen.dart';
+
 class TypeOfMeasurementsScreen extends StatelessWidget {
   const TypeOfMeasurementsScreen({Key? key}) : super(key: key);
 
@@ -119,7 +121,7 @@ class TypeOfMeasurementsScreen extends StatelessWidget {
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text("Step 3", style: CustomTextStyles.titleLargeGray600),
             SizedBox(height: 9.v),
-            Text("Electric Conductivity", style: theme.textTheme.bodyLarge)
+            Text("Soil Potassium", style: theme.textTheme.bodyLarge)
           ]),
           Padding(
               padding: EdgeInsets.symmetric(vertical: 7.v),
@@ -143,7 +145,7 @@ class TypeOfMeasurementsScreen extends StatelessWidget {
           Column(children: [
             Text("Step 4", style: CustomTextStyles.titleLargeGray600),
             SizedBox(height: 7.v),
-            Text("Soil NPK", style: theme.textTheme.bodyLarge)
+            Text("Soil Phosphorous", style: theme.textTheme.bodyLarge)
           ]),
           Padding(
               padding: EdgeInsets.symmetric(vertical: 6.v),
@@ -163,6 +165,12 @@ class TypeOfMeasurementsScreen extends StatelessWidget {
 
   /// Navigates to the typeOfMeasurementsTwoScreen when the action is triggered.
   onTapFrameFortyFive(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.typeOfMeasurementsTwoScreen);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SingleTestResultsPassFiveScreen(responseNumber: 57),
+      ),
+    );
+
   }
 }

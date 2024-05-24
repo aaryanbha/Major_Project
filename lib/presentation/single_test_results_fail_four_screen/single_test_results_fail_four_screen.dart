@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:aaryan_s_application4/core/app_export.dart';
 
 class SingleTestResultsFailFourScreen extends StatelessWidget {
-  const SingleTestResultsFailFourScreen({Key? key})
+  const SingleTestResultsFailFourScreen({Key? key, required String responseNumber})
       : super(
           key: key,
         );

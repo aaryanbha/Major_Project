@@ -1,3 +1,4 @@
+import 'package:aaryan_s_application4/presentation/single_test_results_pass_one_screen/single_test_results_pass_one_screen.dart';
 import 'package:aaryan_s_application4/widgets/app_bar/custom_app_bar.dart';
 import 'package:aaryan_s_application4/widgets/app_bar/appbar_leading_image.dart';
 import 'package:aaryan_s_application4/widgets/app_bar/appbar_trailing_button.dart';
@@ -5,6 +6,8 @@ import 'package:aaryan_s_application4/widgets/custom_icon_button.dart';
 import 'package:aaryan_s_application4/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:aaryan_s_application4/core/app_export.dart';
+
+import '../single_test_results_pass_four_screen/single_test_results_pass_four_screen.dart';
 
 class TypeOfMeasurementsOneScreen extends StatelessWidget {
   const TypeOfMeasurementsOneScreen({Key? key}) : super(key: key);
@@ -65,7 +68,7 @@ class TypeOfMeasurementsOneScreen extends StatelessWidget {
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text("Step 1", style: theme.textTheme.titleLarge),
             SizedBox(height: 7.v),
-            Text("Soil Moisture", style: CustomTextStyles.bodyLargeBluegray700)
+            Text("pH Level", style: CustomTextStyles.bodyLargeBluegray700)
           ]),
           Padding(
               padding: EdgeInsets.symmetric(vertical: 6.v),
@@ -91,7 +94,7 @@ class TypeOfMeasurementsOneScreen extends StatelessWidget {
             SizedBox(height: 9.v),
             Align(
                 alignment: Alignment.center,
-                child: Text("pH Level",
+                child: Text("Soil Nitrogen",
                     style: CustomTextStyles.bodyLargeBluegray700))
           ]),
           Padding(
@@ -123,7 +126,7 @@ class TypeOfMeasurementsOneScreen extends StatelessWidget {
                       children: [
                         Text("Step 3", style: theme.textTheme.titleLarge),
                         SizedBox(height: 9.v),
-                        Text("Electric Conductivity",
+                        Text("Soil Potassium",
                             style: theme.textTheme.bodyLarge)
                       ]),
                   Padding(
@@ -148,7 +151,7 @@ class TypeOfMeasurementsOneScreen extends StatelessWidget {
           Column(children: [
             Text("Step 4", style: CustomTextStyles.titleLargeGray600),
             SizedBox(height: 7.v),
-            Text("Soil NPK", style: theme.textTheme.bodyLarge)
+            Text("Soil Phosphorous", style: theme.textTheme.bodyLarge)
           ]),
           Padding(
               padding: EdgeInsets.symmetric(vertical: 6.v),
@@ -184,6 +187,11 @@ class TypeOfMeasurementsOneScreen extends StatelessWidget {
 
   /// Navigates to the typeOfMeasurementsFiveScreen when the action is triggered.
   onTapFrameFifty(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.typeOfMeasurementsFiveScreen);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SingleTestResultsPassFourScreen(responseNumber: 57),
+      ),
+    );
   }
 }

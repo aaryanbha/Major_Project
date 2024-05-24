@@ -1,3 +1,6 @@
+// import 'dart:js';
+
+import 'package:aaryan_s_application4/core/app_export.dart';
 import 'package:flutter/material.dart';
 import '../presentation/splash_screen/splash_screen.dart';
 import '../presentation/home_screen/home_screen.dart';
@@ -40,7 +43,7 @@ class AppRoutes {
 
   static const String typeOfMeasurementsScreen = '/type_of_measurements_screen';
 
-  static const String typeOfMeasurementsTwoScreen =
+  static const String soilMosistureSolution =
       '/type_of_measurements_two_screen';
 
   static const String singleTestResultsPassFourScreen =
@@ -57,7 +60,8 @@ class AppRoutes {
 
   static const String singleTestResultsPassTwoScreen =
       '/single_test_results_pass_two_screen';
-
+  static const String imageUpload =
+      '/image_upload';
   static const String singleTestResultsPassThreeScreen =
       '/single_test_results_pass_three_screen';
 
@@ -112,7 +116,7 @@ class AppRoutes {
     scannerSuccessScreen: (context) => ScannerSuccessScreen(),
     typeOfMeasurementsThreeScreen: (context) => TypeOfMeasurementsThreeScreen(),
     typeOfMeasurementsScreen: (context) => TypeOfMeasurementsScreen(),
-    typeOfMeasurementsTwoScreen: (context) => TypeOfMeasurementsTwoScreen(),
+    soilMosistureSolution: (context) => TypeOfMeasurementsTwoScreen(),
     singleTestResultsPassFourScreen: (context) =>
         SingleTestResultsPassFourScreen(),
     singleTestResultsPassOneScreen: (context) =>
@@ -128,15 +132,12 @@ class AppRoutes {
     scannerFailedScreen: (context) => ScannerFailedScreen(),
     typeOfMeasurementsSevenScreen: (context) => TypeOfMeasurementsSevenScreen(),
     typeOfMeasurementsFourScreen: (context) => TypeOfMeasurementsFourScreen(),
-    singleTestResultsFailOneScreen: (context) =>
-        SingleTestResultsFailOneScreen(),
+
     singleTestResultsFailFiveScreen: (context) =>
         SingleTestResultsFailFiveScreen(),
     singleTestResultsFailScreen: (context) => SingleTestResultsFailScreen(),
     singleTestResultsFailTwoScreen: (context) =>
         SingleTestResultsFailTwoScreen(),
-    singleTestResultsFailFourScreen: (context) =>
-        SingleTestResultsFailFourScreen(),
     singleTestResultsFailThreeScreen: (context) =>
         SingleTestResultsFailThreeScreen(),
     typeOfMeasurementsFiveScreen: (context) => TypeOfMeasurementsFiveScreen(),

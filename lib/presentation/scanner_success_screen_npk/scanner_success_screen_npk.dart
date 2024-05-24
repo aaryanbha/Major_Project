@@ -1,4 +1,5 @@
-import 'package:aaryan_s_application4/presentation/type_of_measurements_screen/type_of_measurements_screen.dart';
+import 'package:aaryan_s_application4/presentation/single_test_results_fail_four_screen/single_test_results_fail_four_screen.dart';
+import 'package:aaryan_s_application4/presentation/single_test_results_pass_four_screen/single_test_results_pass_four_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -9,16 +10,14 @@ import 'package:aaryan_s_application4/widgets/app_bar/appbar_leading_image.dart'
 import 'package:aaryan_s_application4/widgets/app_bar/appbar_trailing_button_one.dart';
 
 import '../single_test_results_pass_five_screen/single_test_results_pass_five_screen.dart';
-import '../single_test_results_pass_four_screen/single_test_results_pass_four_screen.dart';
 
-class ScannerSuccessScreen extends StatefulWidget {
-  const ScannerSuccessScreen({Key? key}) : super(key: key);
-
+class ScannerSuccessScreenNPK extends StatefulWidget {
+  const ScannerSuccessScreenNPK({Key? key}) : super(key: key);
   @override
-  _ScannerSuccessScreenState createState() => _ScannerSuccessScreenState();
+  _ScannerSuccessScreenNPKState createState() => _ScannerSuccessScreenNPKState();
 }
 
-class _ScannerSuccessScreenState extends State<ScannerSuccessScreen> {
+class _ScannerSuccessScreenNPKState extends State<ScannerSuccessScreenNPK> {
   File? _image;
   int? _apiResponse;
 
@@ -134,7 +133,7 @@ class _ScannerSuccessScreenState extends State<ScannerSuccessScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TypeOfMeasurementsScreen()
+                builder: (context) => SingleTestResultsPassFourScreen(responseNumber: 56.6),
               ),
             );
           },
@@ -152,4 +151,3 @@ class _ScannerSuccessScreenState extends State<ScannerSuccessScreen> {
   }
 
 }
-

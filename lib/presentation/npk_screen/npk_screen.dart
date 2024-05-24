@@ -6,10 +6,8 @@ import 'package:aaryan_s_application4/widgets/custom_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:aaryan_s_application4/core/app_export.dart';
 
-import '../single_test_results_pass_one_screen/single_test_results_pass_one_screen.dart';
-
-class TypeOfMeasurementsSevenScreen extends StatelessWidget {
-  const TypeOfMeasurementsSevenScreen({Key? key}) : super(key: key);
+class NPK_screen extends StatelessWidget {
+  const NPK_screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +22,16 @@ class TypeOfMeasurementsSevenScreen extends StatelessWidget {
                     children: [
                       Padding(
                           padding: EdgeInsets.only(left: 3.h),
-                          child: Text("Full Report",
+                          child: Text("SOIL NPK ",
                               style:
-                                  CustomTextStyles.headlineSmallInterGray900)),
+                              CustomTextStyles.headlineSmallInterGray900)),
                       SizedBox(height: 39.v),
                       _buildFrameFortyFive(context),
                       SizedBox(height: 24.v),
                       _buildFrameFortyNine(context),
                       SizedBox(height: 24.v),
-                      _buildFrameFortySeven(context),
+                      _buildFrameFifty(context),
                       SizedBox(height: 24.v),
-                      _buildFrameFortyEight(context),
-                      SizedBox(height: 5.v)
                     ])),
             bottomNavigationBar: _buildStartOver(context)));
   }
@@ -63,11 +59,11 @@ class TypeOfMeasurementsSevenScreen extends StatelessWidget {
         decoration: AppDecoration.fillGreenA
             .copyWith(borderRadius: BorderRadiusStyle.roundedBorder14),
         child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text("Step 1", style: theme.textTheme.titleLarge),
             SizedBox(height: 7.v),
-            Text("pH Level", style: CustomTextStyles.bodyLargeBluegray700)
+            Text("Nitrogen Test ", style: CustomTextStyles.bodyLargeBluegray700)
           ]),
           Padding(
               padding: EdgeInsets.symmetric(vertical: 6.v),
@@ -76,35 +72,81 @@ class TypeOfMeasurementsSevenScreen extends StatelessWidget {
                   width: 39.adaptSize,
                   padding: EdgeInsets.all(6.h),
                   child:
-                      CustomImageView(imagePath: ImageConstant.imgArrowRight)))
+                  CustomImageView(imagePath: ImageConstant.imgArrowRight)))
         ]));
   }
 
   /// Section Widget
   Widget _buildFrameFortyNine(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 12.v),
+        decoration: AppDecoration.fillGreenA
+            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder14),
+        child:
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text("Step 2", style: theme.textTheme.titleLarge),
+            SizedBox(height: 9.v),
+            Align(
+                alignment: Alignment.center,
+                child: Text("Potassium Test",
+                    style: CustomTextStyles.bodyLargeBluegray700))
+          ]),
+          Padding(
+              padding: EdgeInsets.symmetric(vertical: 7.v),
+              child: CustomIconButton(
+                  height: 39.adaptSize,
+                  width: 39.adaptSize,
+                  padding: EdgeInsets.all(6.h),
+                  child:
+                  CustomImageView(imagePath: ImageConstant.imgArrowRight)))
+        ]));
+  }
+
+  /// Section Widget
+  Widget _buildFrameFifty(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 12.v),
+        decoration: AppDecoration.fillGreenA
+            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder14),
+        child:
+        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text("Step 3", style: theme.textTheme.titleLarge),
+            SizedBox(height: 9.v),
+            Text("Phosphorous Test", style: theme.textTheme.bodyLarge)
+          ]),
+          Padding(
+              padding: EdgeInsets.symmetric(vertical: 7.v),
+              child: CustomIconButton(
+                  height: 39.adaptSize,
+                  width: 39.adaptSize,
+                  padding: EdgeInsets.all(6.h),
+                  child:
+                  CustomImageView(imagePath: ImageConstant.imgArrowRight)))
+        ]));
+  }
+
+  /// Section Widget
+  Widget _buildFrameFiftyOne(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          onTapFrameFifty(context);
+          onTapFrameFiftyOne(context);
         },
         child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 12.v),
+            padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 13.v),
             decoration: AppDecoration.fillGreenA
                 .copyWith(borderRadius: BorderRadiusStyle.roundedBorder14),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Step 2", style: theme.textTheme.titleLarge),
-                        SizedBox(height: 9.v),
-                        Align(
-                            alignment: Alignment.center,
-                            child: Text("Soil Nitrogen",
-                                style: CustomTextStyles.bodyLargeBluegray700))
-                      ]),
+                  Column(children: [
+                    Text("Step 4", style: theme.textTheme.titleLarge),
+                    SizedBox(height: 7.v),
+                    Text("Soil NPK", style: theme.textTheme.bodyLarge)
+                  ]),
                   Padding(
-                      padding: EdgeInsets.symmetric(vertical: 7.v),
+                      padding: EdgeInsets.symmetric(vertical: 6.v),
                       child: CustomIconButton(
                           height: 40.adaptSize,
                           width: 40.adaptSize,
@@ -112,54 +154,6 @@ class TypeOfMeasurementsSevenScreen extends StatelessWidget {
                           child: CustomImageView(
                               imagePath: ImageConstant.imgArrowRight)))
                 ])));
-  }
-
-  /// Section Widget
-  Widget _buildFrameFortySeven(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 12.v),
-        decoration: AppDecoration.fillGray200
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder14),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text("Step 3", style: CustomTextStyles.titleLargeGray600),
-            SizedBox(height: 9.v),
-            Text("Soil Potassium", style: theme.textTheme.bodyLarge)
-          ]),
-          Padding(
-              padding: EdgeInsets.symmetric(vertical: 7.v),
-              child: CustomIconButton(
-                  height: 40.adaptSize,
-                  width: 40.adaptSize,
-                  padding: EdgeInsets.all(6.h),
-                  child: CustomImageView(
-                      imagePath: ImageConstant.imgArrowRightGray600)))
-        ]));
-  }
-
-  /// Section Widget
-  Widget _buildFrameFortyEight(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 19.h, vertical: 13.v),
-        decoration: AppDecoration.fillGray200
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder14),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Column(children: [
-            Text("Step 4", style: CustomTextStyles.titleLargeGray600),
-            SizedBox(height:7.v),
-            Text("Soil Phosphorous", style: theme.textTheme.bodyLarge)
-          ]),
-          Padding(
-              padding: EdgeInsets.symmetric(vertical: 6.v),
-              child: CustomIconButton(
-                  height: 40.adaptSize,
-                  width: 40.adaptSize,
-                  padding: EdgeInsets.all(6.h),
-                  child: CustomImageView(
-                      imagePath: ImageConstant.imgArrowRightGray600)))
-        ]));
   }
 
   /// Section Widget
@@ -183,13 +177,8 @@ class TypeOfMeasurementsSevenScreen extends StatelessWidget {
     Navigator.pushNamed(context, AppRoutes.homeScreen);
   }
 
-  /// Navigates to the typeOfMeasurementsFourScreen when the action is triggered.
-  onTapFrameFifty(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => SingleTestResultsPassOneScreen(responseNumber: 123),
-      ),
-    );
+  /// Navigates to the typeOfMeasurementsSixScreen when the action is triggered.
+  onTapFrameFiftyOne(BuildContext context) {
+    Navigator.pushNamed(context, AppRoutes.typeOfMeasurementsSixScreen);
   }
 }

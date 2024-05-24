@@ -397,6 +397,6 @@ class HomeScreen extends StatelessWidget {
 
   /// Navigates to the typeOfMeasurementsThreeScreen when the action is triggered.
   onTapNewMeasurement(BuildContext context) {
-    Navigator.pushNamed(context, AppRoutes.typeOfMeasurementsThreeScreen);
+    Navigator.pushNamed(context, AppRoutes.scannerSuccessScreen);
   }
 }
