@@ -177,13 +177,13 @@ class _ScannerSuccessScreenState extends State<ScannerSuccessScreen> {
         child: (_mainImage != null)
             ? Image.file(
                 File(_mainImage!),
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )
             : CustomImageView(
                 imagePath: ImageConstant.imgWhatsappImage20240127,
                 height: 92.v,
                 width: 299.h,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
       ),
       // child: CustomImageView(
